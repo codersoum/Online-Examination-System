@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Online Examination Management System</title>
+</head>
+<body>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="ems.js" defer></script>
+    <style>
+        body
+        {
+            color: rgb(0, 9, 128);
+            background-color:rgb(0, 255, 153);
+            width:100%;
+            height:100vh;
+        }
+ .loginmenu{
+            position:fixed;
+            opacity:1;
+            top:50%;
+            left:50%;
+            max-width:40%;
+            width:100%;
+            background:#fff;
+            border:2px  solid #fff;
+            transform:translate(-50%,-50%)
+        }
+    .loginmenu .loginbox{
+        margin-top: 50px; 
+        margin:top 450px;
+        text-align: center;
+        background: white;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+       } 
+        form .inputfield{
+            height:60px;
+            width:100%;
+            margin-top:10px;
+            position:center;
+        }
+        label{
+            font-weight:500 ;
+            font-size: 23px;
+            color:black
+        }
+         input{
+           height: 70%;
+           width: 50%;
+           padding: 0 15px;
+           font-size: 0.95rem;
+           border-radius: 3px;
+           border: 1px solid grey;
+           outline: none;
+           text-align:center;
+        }
+        form button{
+            width :30%;
+            outline:none;
+            border:none;
+            font-size: 1 rem;
+            font-weight: 600;
+            padding :14px 0;
+            border-radius: 3px;
+            color:#fff;
+            background:rgb(0, 170, 255);
+            cursor:pointer;
+            align-items: center;
+        }
+        .loginmenu h1{
+            text-align:center;
+            margin-bottom:80px;
+            color:black;
+        }
+    </style>
+    <div class="loginmenu">
+        <h1>Login to your Account</h1>
+        <div class="loginbox">
+            <form  method="POST" action="/ALogin">
+                <div class="inputfield">
+                  <label>Enter your Username</label>
+                  <input type="text" placeholder="Type your Username" name="Adminid" required id="Adminname">
+                </div>
+                <div class="inputfield">
+                    <label>Enter your Password</label>
+                    <input type="password" placeholder="Type your Password" name="AdPass" required>
+                  </div>
+            <button type="submit" id="ls" >SUBMIT</button>
+              </form>
+        </div>
+    </div>
+</body>
+</html>

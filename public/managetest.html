@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Online Examination Management System</title>
+</head>
+<body>
+  <script src="ems.js" defer></script>
+    <style>
+        body {
+    display: block;
+    color: rgb(0, 9, 128);
+    background-color: rgb(0, 255, 153);
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+table, th, td {
+    border: 1px solid black;
+    background-color: whitesmoke;
+    padding: 10px;
+}
+
+table {
+    width: 70%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-radius: 10px;
+    overflow: hidden; /* This is needed for the rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+td, th {
+    text-align: center;
+    font-style: normal;
+}
+
+h1 {
+    text-decoration: underline;
+    text-align: center;
+    font-size: 40px;
+}
+        .Testcard{
+            width: 80%;
+            max-width: 400px; 
+            padding: 20px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+             background-color: #fff;
+            text-align: center;
+            margin-left: 500px;
+            justify-content: center;
+            display:block;
+        }
+        .Testcard .buttons{
+            display:flex;
+           list-style:none;
+           gap:35px;
+        }
+        .Testcard .Testname
+        {
+          text-align:justify;
+          position: relative;
+          padding-right: 60px;
+        }
+        .Testcard label
+       {
+        display:block;
+        font-weight: bold;
+       }
+       .Testcard input
+       {
+        display:block;
+        width:100%;
+       }
+        .Testcard .starttime
+        {
+          text-align:justify;
+          position: relative;
+          padding-right: 60px;
+        }
+        .Testcard .Endtime
+        {
+          text-align:justify;
+          position: relative;
+          padding-right: 60px;
+        }
+        .Testcard .Testname
+        {
+          text-align:justify;
+          position: relative;
+          padding-right: 60px;
+        }
+        .Testcard .Maxmarks
+        {
+          text-align:justify;
+          position: relative;
+          padding-right: 20px;
+        }
+        .Testcard .Maxqs
+        {
+          text-align:justify;
+          position: relative;
+          padding-right: 20px;
+        }
+    body .Q
+    {
+     padding:10px 20px;
+     font-size:16px;
+     border-radius: 5px;
+     cursor:pointer;
+     background-color: #007BFF;
+     color:white;
+    }
+    .Testcard .buttons button
+    {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    }
+    </style>
+  <script src="ems.js"></script>
+  <h1>Manage Tests</h1>
+  <br><br>
+  <div class="Testcard">
+    <label class="Testname">Enter the test name</label>
+    <input type="text" name="testname" id="testname">
+    <br><br>
+    <label class="starttime"> Enter the starting time</label>
+    <input type="datetime-local" name="testname" id="testst">
+    <br><br>
+    <label class="Endtime"> Enter the ending time</label>
+    <input type="datetime-local" name="testname" id="testen">
+    <br><br>
+    <label class="Maxmarks"> Enter Maximum marks</label>
+    <input type="text" name="Maxmarks" id="marks">
+    <br><br>
+    <label class="Maxqs"> Enter Maximum Questions</label>
+    <input type="text" name="qs" id="Questions">
+    <br><br>
+    <ul class="buttons">
+        <button id="addtest" onclick="val()" >ADD</button>
+        <button id="remtest" name="removetest" onclick="remtest()">REMOVE</button>
+        <button id="uptest" name ="updatetest" onclick="updatetest()">UPDATE</button>
+    </ul>
+  </div>
+  <button class="Q" id="fetchQuestions" onclick="show()" type="submit">Show Tests</button>
+  <br> <br>
+  <table id="Fetchinhg">
+    <thead>
+    <tr>
+       <th >Index</th> 
+       <th >TestName</th>
+       <th >Start Time</th>
+       <th>End Time</th>
+       <th>Marks</th>
+       <th>Questions</th>
+    </tr>
+   </thead>
+       <tbody id="tabletest">
+
+       </tbody>
+     </table>
+</body>

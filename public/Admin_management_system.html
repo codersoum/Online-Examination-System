@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Online Examination Management System</title>
+</head>
+<body>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+     <script src="ems.js" defer></script>
+    <style>
+        body{
+            color: rgb(0, 9, 128);
+            background-color:rgb(0, 255, 153);
+            background-image:url("https://images.spiceworks.com/wp-content/uploads/2023/07/26120435/System-Administrator-at-Work.jpg");
+            background-size:cover;
+            width: 100px;
+            height: 100px;
+        }
+        .body.show-popup
+        {
+            display:none;
+        }
+        .body.show-popup
+        {
+          display:flex;
+        }
+        .icon {
+            font-size: 48px;
+            margin: 20px;
+        }
+        .navbar .logo img
+        {
+           width:50px;
+           border-radius: 50%;
+          position:justify;
+        }
+        .navbar .links
+        {
+           display:flex;
+           list-style:none;
+           gap:35px;
+        }
+        .navbar .links a
+        {
+           text-decoration:none;
+           font-weight:500;
+           font-size:1.1rem;
+           color:white;
+        }
+        .navbar .logo
+        {
+            display:flex;
+            gap:10px;
+            align-items:center;
+            text-decoration:none;
+        }
+        .navbar .logo h2{
+            font-size:1.7 rem;
+            font-weight:500;
+           color:white;
+        }
+        .navbar
+        {
+        display:flex;
+        align-items:center;
+        max-width:1200px;
+        padding :20px 0;
+        margin:0 auto;
+        justify-content:space-between
+        }
+        header{
+            position:fixed;
+            width:100%;
+            left:0;
+            right:0;
+            padding :0 10px;
+        }
+        .navbar .button
+        {
+           padding-left: 45px;
+        }
+        .navbar .button button
+        {
+          border:none;
+          outline:none;
+          color:blue;
+          font-size: 1rem;
+          font-weight:600;
+          padding:10px 16px;
+          gap:30vh;
+          border-radius: 3px;
+          cursor:pointer;
+          background: #fff;
+        }
+        .popupmenu{
+            position:fixed;
+            opacity:0;
+            top:50%;
+            left:50%;
+            max-width:60%;
+            width:100%;
+            background:#fff;
+            border:2px  solid #fff;
+            transform:translate(-50%,-50%)
+        }
+        .popupmenu .formbox{
+            display:flex;
+        }
+        .popupmenu .courses
+        {
+          display:none;
+        }
+        .popupmenu .material-symbols-outlined
+        {
+         position:absolute;
+         top:12px;
+         right:12px;
+         color:black;
+         cursor:pointer;
+        }
+        .formbox .formdetails
+        {
+           width: 100%;
+          color: #fff;
+          max-width: 330px;
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+        .student .formdetails{
+            max-width: 330px;
+            padding-right: 5%;
+            text-align:center;
+            align-items:center;
+            justify-content:center; 
+        }
+        .courses .formdetails{
+            max-width: 330px;
+            padding-right: 5%;
+            text-align:center;
+            align-items:center;
+            justify-content:center; 
+        }
+        .formbox .formcontents{
+            width :100%;
+            padding:35 px;
+        }
+        .formbox .formcontents h2{
+            text-align:justify;
+        }
+        form .inputfield{
+            height:50px;
+            width:100%;
+            margin-top:20px;
+            position:relative
+        }
+        form .inputfield input{
+            height: 70%;
+           width: 50%;
+           padding: 0 15px;
+           font-size: 0.95rem;
+           border-radius: 3px;
+           border: 1px solid grey;
+           outline: none;
+        }
+        .formbox h2{
+            text-align:center;
+            margin-bottom:30px;
+            color:black;
+        }
+        form button{
+            width :50%;
+            outline:none;
+            border:none;
+            font-size: 1 rem;
+            font-weight: 600;
+            padding :14px 0;
+            border-radius: 3px;
+            color:#fff;
+            background:rgb(0, 170, 255);
+            cursor:pointer;
+        }
+        .show-popup .popupmenu{
+            opacity:1;
+            pointer-events:auto;
+            transform:translate(-50%,-50%);
+            transition:transform 0.3s ease,opacity 0.1s
+
+        }
+        .formcontents .bottom-link
+        {
+            color:black;
+            text-align: center;
+        }
+        .blur-bg-overlay
+        {
+         position :fixed;
+         top:0;
+         left:0;
+         width:100%;
+         height:100%;
+         opacity:0;
+         pointer-events:none;
+         backdrop-filter:blur(5px);
+         transition: 0.1s ease
+        }
+        .show-popup .blur-bg-overlay
+        {
+          opacity:1;
+          pointer-events:auto;
+        }
+        .popupmenu.student
+        {
+         display:none;
+        }
+        .popupmenu.showcourses .student
+         {
+          display:none;
+         }
+        .popupmenu.showcourses .courses
+        {
+         display:flex;
+        }
+    </style>
+    <header>
+        <nav class="navbar">
+        <a href="#" class="logo">
+          <img src="https://e7.pngegg.com/pngimages/636/819/png-clipart-computer-icons-privacy-policy-admin-icon-copyright-rim.png" alt="logo">
+          <h2>Online Examination System</h2>
+        </a>
+        <ul class="links">
+        <li><a href="Main_portal.html"> Home </a></li>
+        <li><a href="manageusers.html"> Manage Students </a></li>
+        <li><a href="Admin_rankpage.html">Manage  Results</a></li>
+        <li><a href="managetest.html">Manage Tests</a></li>
+        </ul>
+        <div class="button">
+        <button id="R">REGISTER</button>
+        <button   id="L" onclick="goToPage()">LOGIN</button>
+        <button  id="Ao" onclick="goAdmindel()">LOGOUT</button>
+        </div>
+        </nav>
+    </header>
+    <div class="blur-bg-overlay"></div>
+    <div class="popupmenu">
+      <span class="material-symbols-outlined">close_small</span>
+        <div class="formbox admin">
+         <div class="formdetails">
+         <h2>Welcome!</h2>
+         <h2>Please register using your personal information to access our website.</h2>
+        </div>
+        <div class="formcontents">
+          <h2>Administrator</h2>
+          <form  method="POST" action="/aregister">
+            <div class="inputfield">
+              <input type="text" placeholder="Username" name="Adminname" id="u" required>
+            </div>
+            <div class="inputfield">
+                <input type="number" placeholder="PhoneNumber" name="Adminphone" id="An" required>
+              </div>
+              <div class="inputfield">
+                <input type="text" placeholder="Department" name="department" id="Eadd" required>
+              </div>
+              <div class="inputfield">
+                <input type="text" placeholder="Role" name="Role" id="Role"required>
+              </div>
+        <button type="submit" id="a_submit">SUBMIT</button>
+          </form>
+        </div>
+        </div>        
+</body>
+</html>

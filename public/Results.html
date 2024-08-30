@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Online Examination Management System</title>
+</head>
+<body>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<style>
+	  body {
+       display: block;
+       color: rgb(0, 9, 128);
+       background-color: rgb(0, 255, 153);
+       width: 100%;
+       height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+	 .container h1
+	 {
+		text-align:center;
+        color:blue;
+		text-decoration:underline;
+	 }
+	 .container .links li
+	 {
+	   letter-spacing: 0vb;
+	   list-style-type:none
+	 }
+     .container .links .incorrect 
+	 {
+      color: red;
+	  font-size:1.8rem;
+      font-weight:500;
+	  text-align: center;
+     }
+	 .container .links .correct 
+	 {
+		color:green;
+		font-size:1.8rem;
+        font-weight:500;
+        text-align: center;
+	 }
+	 .container .links .Q
+	 {
+		color:goldenrod;
+		font-size:1.8rem;
+         font-weight:500;
+		 text-align: center;
+	 }
+	 .container .links .NQ
+	 {
+		color:rgb(27, 30, 71);
+		font-size:1.8rem;
+         font-weight:500;
+		 text-align: center;
+	 }
+	 .container h2
+	 {
+	  text-align:center;
+	  font-size:1.8 rem;
+      font-weight:500
+	 }
+	 .outline 
+      {
+         border: 2px solid #007bff;
+		 margin-bottom: 60px;
+         border-radius: 10px;
+         padding: 15px;
+         background-color: #e6f7ff;
+        }
+	</style>
+	<div class="container">
+		<h1>Results</h1>
+		<br>
+		<br>
+		<div class="outline">
+		<h3> Here is your Score!!</h3>
+		<br>
+		<br>
+		<h2 id="congrats" name="total"></h2><br><br><br>
+		<ul class="links">
+			<li  class="correct" >Correct Answers: <label id="correct">" "</label></li>
+			<br>
+			<br>
+			<li class="incorrect">Incorrect Answers: <label  id="incorrect">" " </label></li>
+			<br>
+			<br>
+			<li class="Q" >         Attempted Questions: <label id="Attempted">"   "</label></li>
+			<br>
+			<br>
+			<li class="NQ">          Unattempted Questions: <label id="Unattempted">"  "</label></li>
+			<br>
+			<br>
+		</ul>
+		<button id="save">Save</button>
+	</div>
+	</div>
+	<script>
+		const total=localStorage.getItem('Total')
+		const correct=localStorage.getItem('correct')
+		const incorrect=localStorage.getItem('incorrect')
+		const attempted=localStorage.getItem('attempted')
+		const unattempted=localStorage.getItem('Un')
+		console.log(unattempted)
+		document.getElementById('congrats').innerHTML="You have scored"+'  '+total+'  '+"out of" +localStorage.getItem('sum')
+		document.getElementById('correct').innerHTML= correct
+		document.getElementById('incorrect').innerHTML=incorrect
+		document.querySelector('#Attempted').innerHTML='         '+attempted
+		document.querySelector('#Unattempted').innerHTML=unattempted
+		localStorage.setItem("Total_score",total)
+	    fetch(`http://localhost:8000/postresult`, {
+      method: "POST",
+      headers: {
+          "Content-type": "application/json; charset=UTF-8"
+      },
+      body: JSON.stringify({
+          "Username": localStorage.getItem("User_name"),
+          "Testname":localStorage.getItem("Test_name"),
+          "Totalscore":localStorage.getItem("Total_score"),
+		  "Maths":localStorage.getItem("Maths"),
+		  "Physics":localStorage.getItem("Physics"),
+		  "Chemistry":localStorage.getItem("Chemistry"),
+
+      })
+  })
+  .then((response)=> {
+    console.log(response.status)
+    return response.json()
+  })
+  .then(data => {
+	  localStorage.removeItem("User_name")
+      console.log(data);
+  })
+  .catch(error => {
+      console.error('Error:', error);
+  });
+  document.getElementById("save").addEventListener("click",()=>{
+	document.getElementById('congrats').innerHTML=" "
+	document.getElementById('correct').innerHTML=" "
+	document.getElementById('incorrect').innerHTML=" "
+	document.querySelector('#Attempted').innerHTML=" "
+	document.querySelector('#Unattempted').innerHTML=" "
+
+})
+	  </script>
+</body>
